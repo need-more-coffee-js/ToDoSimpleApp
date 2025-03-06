@@ -4,7 +4,6 @@
 //
 //  Created by Денис Ефименков on 19.02.2025.
 //
-
 import CoreData
 import UIKit
 
@@ -51,10 +50,15 @@ class TaskViewModel {
         CoreDataManager.shared.saveContext()
     }
     
+    // Изменение статуса задачи
+    func toggleTaskCompletion(at index: Int) {
+        let task = tasks[index]
+        task.isCompleted.toggle()
+        CoreDataManager.shared.saveContext()
+    }
+    
     // Получение задачи по индексу
     func task(at index: Int) -> Task {
         return tasks[index]
     }
-    
-    
 }

@@ -71,6 +71,13 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: TaskCell.reuseIdentifier, for: indexPath) as! TaskCell
         let task = viewModel.task(at: indexPath.row)
         cell.configure(with: task)
+        
+        // Обработка изменения состояния переключателя
+        cell.switchValueChanged = { [weak self] isOn in
+            guard let self = self else { return }
+            self.viewModel.toggleTaskCompletion(at: indexPath.row)
+        }
+        
         return cell
     }
     
