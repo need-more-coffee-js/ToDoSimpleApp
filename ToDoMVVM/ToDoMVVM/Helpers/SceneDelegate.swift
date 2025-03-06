@@ -22,13 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Создаем окно
         window = UIWindow(windowScene: windowScene)
 
-        // Создаем зависимости
-        let taskService = TaskService() // Сервис для загрузки задач
-        let taskViewModel = TaskViewModel(taskService: taskService) // ViewModel
-        let taskListViewController = TaskListViewController(viewModel: taskViewModel) // ViewController
-
         // Создаем UINavigationController и устанавливаем TaskListViewController как корневой
-        let navigationController = UINavigationController(rootViewController: taskListViewController)
+        let navigationController = UINavigationController(rootViewController: TaskListViewController())
 
         // Устанавливаем navigationController как rootViewController
         window?.rootViewController = navigationController
